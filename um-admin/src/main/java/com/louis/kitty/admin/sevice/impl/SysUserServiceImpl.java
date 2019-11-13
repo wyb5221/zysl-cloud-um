@@ -154,7 +154,7 @@ public class SysUserServiceImpl  implements SysUserService {
 			if(sysRole == null) {
 				continue ;
 			}
-			sb.append(sysRole.getRemark());
+			sb.append(sysRole.getName());
 			if(iter.hasNext()) {
 				sb.append(", ");
 			}

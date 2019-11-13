@@ -63,8 +63,8 @@ public class SysInfoController {
 	@PostMapping(value="/delete")
 	public HttpResult delete(@RequestBody List<SysInfo> records) {
 
-//		return HttpResult.ok(sysInfoService.delete(records));
-		return HttpResult.ok(sysInfoService.updateDel(records));
+		return HttpResult.ok(sysInfoService.delete(records));
+//		return HttpResult.ok(sysInfoService.updateDel(records));
 	}
 
     /**
