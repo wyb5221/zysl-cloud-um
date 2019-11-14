@@ -31,17 +31,11 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
   # spring boot admin
   application:
-    name: kitty-admin
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
-      discovery:
-        serviceName: ${spring.application.name}	# 注册到consul的服务名称
-  boot:
-    admin:
-      client:
-        url: "http://localhost:8000"
+    name: um-admin
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eureka.service.url}
 # pagehelper   
 pagehelper:
     helperDialect: mysql

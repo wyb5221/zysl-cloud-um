@@ -65,7 +65,7 @@ public class DruidConfig {
      *
      * @return
      */
-    @Bean
+   /* @Bean
     @ConditionalOnMissingBean
     public ServletRegistrationBean<Servlet> druidServlet() {
         ServletRegistrationBean<Servlet> servletRegistrationBean = new ServletRegistrationBean<Servlet>(new StatViewServlet(), "/druid/*");
@@ -81,14 +81,14 @@ public class DruidConfig {
         servletRegistrationBean.addInitParameter("resetEnable", "true");
         return servletRegistrationBean;
 
-    }
+    }*/
 
     /**
      * 注册Filter信息, 监控拦截器
      *
      * @return
      */
-    @Bean
+    /*@Bean
     @ConditionalOnMissingBean
     public FilterRegistrationBean<Filter> filterRegistrationBean() {
         FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<Filter>();
@@ -96,5 +96,5 @@ public class DruidConfig {
         filterRegistrationBean.addUrlPatterns("/*");
         filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
         return filterRegistrationBean;
-    }
+    }*/
 }
