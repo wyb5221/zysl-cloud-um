@@ -8,6 +8,8 @@ public class SysRole extends BaseModel {
 
     private Byte delFlag;
 
+	private String code;
+
 	public String getName() {
 		return name;
 	}
@@ -32,4 +34,21 @@ public class SysRole extends BaseModel {
 		this.delFlag = delFlag;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	@Override
+	public String toString() {
+		return "SysRole{" +
+				"name='" + name + '\'' +
+				", remark='" + remark + '\'' +
+				", delFlag=" + delFlag +
+				", code='" + code + '\'' +
+				'}';
+	}
 }

@@ -15,9 +15,10 @@
 	<result column="last_update_by" jdbcType="VARCHAR" property="lastUpdateBy" />
 	<result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
 	<result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+    <result column="secret" jdbcType="VARCHAR" property="secret" />
   </resultMap>
   
-  <insert id="add" parameterType="com.louis.kitty.admin.model.SysService">
+  <insert id="insertService" parameterType="com.louis.kitty.admin.model.SysService">
     insert into sys_service
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -56,6 +57,9 @@
       <if test="delFlag != null">
         del_flag,
       </if>
+      <if test="secret != null">
+        secret,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -93,6 +97,9 @@
       </if>
       <if test="delFlag != null">
         #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="secret != null">
+        #{secret,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -140,6 +147,9 @@
       </if>
       <if test="delFlag != null">
         del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="secret != null">
+        secret = #{secret,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}

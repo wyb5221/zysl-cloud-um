@@ -30,7 +30,7 @@ public class SysServiceServiceImpl implements SysServiceService {
 	@Override
 	public int save(SysService record) {
 		if(record.getId() == null || record.getId() == 0) {
-			return sysServiceMapper.add(record);
+			return sysServiceMapper.insertService(record);
 		}
 		return sysServiceMapper.update(record);
 	}

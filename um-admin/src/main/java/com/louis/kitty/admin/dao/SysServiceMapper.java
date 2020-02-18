@@ -22,7 +22,7 @@ public interface SysServiceMapper {
 	 * @param record
 	 * @return
 	 */
-    int add(SysService record);
+    int insertService(SysService record);
 
     /**
      * 删除微服务表
@@ -47,7 +47,6 @@ public interface SysServiceMapper {
 
     /**
      * 基础分页查询
-     * @param record
      * @return
      */    
     List<SysService> findPage();
