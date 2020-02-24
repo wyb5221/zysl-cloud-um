@@ -85,4 +85,17 @@ public class SysServiceController {
 		log.info("--update--修改微服务表数据入参record：{}", record);
 		return sysServiceService.update(record) > 0 ? HttpResult.ok() : HttpResult.error();
 	}
+
+	/**
+	 *
+	 * @param roleName
+	 * @param Validity
+	 * @return
+	 */
+	@GetMapping(value="/getJwt")
+	public HttpResult getJwt(Long id, String roleName, Integer Validity){
+		String resultJwt = sysServiceService.getJwtToken(id, roleName, Validity);
+
+		return HttpResult.ok(resultJwt);
+	}
 }

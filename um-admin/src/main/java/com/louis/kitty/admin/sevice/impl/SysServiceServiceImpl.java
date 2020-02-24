@@ -1,16 +1,25 @@
 package com.louis.kitty.admin.sevice.impl;
 
+import com.louis.kitty.admin.dao.DataOperateMyMapper;
 import com.louis.kitty.admin.dao.SysServiceMapper;
+import com.louis.kitty.admin.model.ServiceRole;
 import com.louis.kitty.admin.model.SysService;
 import com.louis.kitty.admin.sevice.SysServiceService;
+import com.louis.kitty.admin.util.DateUtil;
 import com.louis.kitty.core.page.ColumnFilter;
 import com.louis.kitty.core.page.MybatisPageHelper;
 import com.louis.kitty.core.page.PageRequest;
 import com.louis.kitty.core.page.PageResult;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ---------------------------
@@ -22,10 +31,14 @@ import java.util.List;
  * ---------------------------
  */
 @Service
+@Slf4j
 public class SysServiceServiceImpl implements SysServiceService {
 
 	@Autowired
 	private SysServiceMapper sysServiceMapper;
+
+	@Autowired
+	private DataOperateMyMapper dataOperateMyMapper;
 
 	@Override
 	public int save(SysService record) {
@@ -89,5 +102,28 @@ public class SysServiceServiceImpl implements SysServiceService {
 		}
 		pageResult.setContent(sysServiceMapper.queryBySysKey(sysKey));
 		return pageResult;
+	}
+
+	@Override
+	public String getJwtToken(Long id, String roleName, Integer Validity) {
+		log.info("--获取jwt入参--roleName:{},Validity:{}", roleName, Validity);
+		SysService sysService = sysServiceMapper.findById(id);
+		String secret = "";
+		if(null != sysService){
+			secret = sysService.getSecret();
+		}
+		//查询权限
+		List<ServiceRole> list = dataOperateMyMapper.queryServiceRole(roleName);
+		Date expirationDate = DateUtil.addDateHour(new Date(), Validity);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("app", roleName);
+		map.put("name", "");
+		map.put("userId", "");
+		map.put("roleList", list);
+		return Jwts.builder().
+				setClaims(map).
+				setExpiration(expirationDate).
+				signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 }

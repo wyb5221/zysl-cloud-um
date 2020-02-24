@@ -1,6 +1,7 @@
 package com.louis.kitty.admin.dao;
 
 import com.louis.kitty.admin.dto.resp.SysInfoMenuDTO;
+import com.louis.kitty.admin.model.ServiceRole;
 import com.louis.kitty.admin.model.SysApi;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,4 +17,7 @@ public interface DataOperateMyMapper {
 
     //查询系统对应的菜单
     List<SysInfoMenuDTO> querySysInfoMenu();
+
+    //查询服务权限
+    List<ServiceRole> queryServiceRole(String name);
 }

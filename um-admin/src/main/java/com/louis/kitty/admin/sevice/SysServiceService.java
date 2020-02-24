@@ -16,4 +16,6 @@ import com.louis.kitty.core.service.CurdService;
 public interface SysServiceService extends CurdService<SysService> {
 
     PageResult findBySysKey(Long sysKey);
+
+    String getJwtToken(Long id, String roleName, Integer Validity);
 }

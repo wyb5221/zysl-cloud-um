@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.louis.kitty.admin.security.JwtUserDetails;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -46,7 +47,7 @@ public class JwtTokenUtils implements Serializable {
     /**
      * 有效期12小时
      */
-    private static final long EXPIRE_TIME = 1200 * 60 * 60 * 1000;
+    private static final long EXPIRE_TIME = 12000L * 60 * 60 * 1000;
 
     /**
 	 * 生成令牌
@@ -121,7 +122,7 @@ public class JwtTokenUtils implements Serializable {
 						authorities.add(new GrantedAuthorityImpl((String) ((Map) object).get("authority")));
 					}
 				}
-				authentication = new JwtAuthenticatioToken(username, null, authorities, token);
+				authentication = new JwtAuthenticatioToken(new JwtUserDetails(username,null,null,authorities), null, authorities, token);
 			} else {
 				if(validateToken(token, SecurityUtils.getUsername())) {
 					// 如果上下文中Authentication非空，且请求令牌合法，直接返回当前登录认证信息

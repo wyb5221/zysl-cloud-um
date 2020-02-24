@@ -25,11 +25,13 @@ public class ApiRolesQueryServiceImpl implements ApiRolesQueryService {
         String url = "/"+StringUtils.join(pathList,"/",2,pathList.length);
 
         SysApi sysApi = dataOperateMyMapper.querySysApiId(gateCode, url);
-        apiRolesDTO.setApiType(sysApi.getApiType());
-        apiRolesDTO.setAuthType(sysApi.getAuthType());
+        if(null != sysApi){
+            apiRolesDTO.setApiType(sysApi.getApiType());
+            apiRolesDTO.setAuthType(sysApi.getAuthType());
 
-        List<String> roleList = dataOperateMyMapper.querySysRoles(sysApi.getId());
-        apiRolesDTO.setRoles(roleList);
+            List<String> roleList = dataOperateMyMapper.querySysRoles(sysApi.getId());
+            apiRolesDTO.setRoles(roleList);
+        }
 
         return apiRolesDTO;
     }
