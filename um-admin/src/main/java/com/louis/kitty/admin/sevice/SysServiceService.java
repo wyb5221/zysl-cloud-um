@@ -1,5 +1,6 @@
 package com.louis.kitty.admin.sevice;
 
+import com.louis.kitty.admin.model.CreateJwtRequest;
 import com.louis.kitty.admin.model.SysService;
 import com.louis.kitty.core.page.PageResult;
 import com.louis.kitty.core.service.CurdService;
@@ -17,5 +18,5 @@ public interface SysServiceService extends CurdService<SysService> {
 
     PageResult findBySysKey(Long sysKey);
 
-    String getJwtToken(Long id, String roleName, Integer Validity);
+    String getJwtToken(CreateJwtRequest request);
 }

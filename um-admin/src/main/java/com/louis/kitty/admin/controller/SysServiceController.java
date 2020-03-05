@@ -1,5 +1,6 @@
 package com.louis.kitty.admin.controller;
 
+import com.louis.kitty.admin.model.CreateJwtRequest;
 import com.louis.kitty.admin.model.SysService;
 import com.louis.kitty.admin.sevice.SysServiceService;
 import com.louis.kitty.core.http.HttpResult;
@@ -88,13 +89,12 @@ public class SysServiceController {
 
 	/**
 	 *
-	 * @param roleName
-	 * @param Validity
+	 * @param request
 	 * @return
 	 */
-	@GetMapping(value="/getJwt")
-	public HttpResult getJwt(Long id, String roleName, Integer Validity){
-		String resultJwt = sysServiceService.getJwtToken(id, roleName, Validity);
+	@PostMapping(value="/getJwt")
+	public HttpResult getJwt(@RequestBody CreateJwtRequest request){
+		String resultJwt = sysServiceService.getJwtToken(request);
 
 		return HttpResult.ok(resultJwt);
 	}
