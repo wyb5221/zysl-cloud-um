@@ -1,5 +1,7 @@
 package com.louis.kitty.admin.model;
 
+import java.util.Date;
+
 /**
  * ---------------------------
  * 微服务表 (SysService)         
@@ -35,6 +37,8 @@ public class SysService {
 	private java.util.Date lastUpdateTime;
 	/** 是否删除  -1：已删除  0：正常 */
 	private Integer delFlag;
+	/** jwt签名 */
+	private String secret;
 
 	public Long getId() {
 		return id;
@@ -100,11 +104,11 @@ public class SysService {
 		this.createBy = createBy;
 	}
 
-	public java.util.Date getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(java.util.Date createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
@@ -116,11 +120,11 @@ public class SysService {
 		this.lastUpdateBy = lastUpdateBy;
 	}
 
-	public java.util.Date getLastUpdateTime() {
+	public Date getLastUpdateTime() {
 		return lastUpdateTime;
 	}
 
-	public void setLastUpdateTime(java.util.Date lastUpdateTime) {
+	public void setLastUpdateTime(Date lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
@@ -132,4 +136,30 @@ public class SysService {
 		this.delFlag = delFlag;
 	}
 
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
+
+	@Override
+	public String toString() {
+		return "SysService{" +
+				"id=" + id +
+				", sysKey=" + sysKey +
+				", code='" + code + '\'' +
+				", name='" + name + '\'' +
+				", gateCode='" + gateCode + '\'' +
+				", developer='" + developer + '\'' +
+				", remark='" + remark + '\'' +
+				", createBy='" + createBy + '\'' +
+				", createTime=" + createTime +
+				", lastUpdateBy='" + lastUpdateBy + '\'' +
+				", lastUpdateTime=" + lastUpdateTime +
+				", delFlag=" + delFlag +
+				", secret='" + secret + '\'' +
+				'}';
+	}
 }

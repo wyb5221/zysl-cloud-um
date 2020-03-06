@@ -1,5 +1,6 @@
 package com.louis.kitty.admin.controller;
 
+import com.louis.kitty.admin.model.CreateJwtRequest;
 import com.louis.kitty.admin.model.SysService;
 import com.louis.kitty.admin.sevice.SysServiceService;
 import com.louis.kitty.core.http.HttpResult;
@@ -84,5 +85,17 @@ public class SysServiceController {
 	public HttpResult update(@RequestBody SysService record) {
 		log.info("--update--修改微服务表数据入参record：{}", record);
 		return sysServiceService.update(record) > 0 ? HttpResult.ok() : HttpResult.error();
+	}
+
+	/**
+	 *
+	 * @param request
+	 * @return
+	 */
+	@PostMapping(value="/getJwt")
+	public HttpResult getJwt(@RequestBody CreateJwtRequest request){
+		String resultJwt = sysServiceService.getJwtToken(request);
+
+		return HttpResult.ok(resultJwt);
 	}
 }
