@@ -119,8 +119,8 @@ public class SysServiceServiceImpl implements SysServiceService {
 		String[] authorities = request.getUserRoles().split(",");
 		map.put("authorities", authorities);
 		Date expirationDate = null;
-		if(!StringUtils.isBlank(request.getValidity()+"")){
-			expirationDate = DateUtil.addDateHour(new Date(), request.getValidity());
+		if(!StringUtils.isBlank(request.getValidity())){
+			expirationDate = DateUtil.getStringToDate(request.getValidity());
 			map.put("exp", expirationDate);
 		}
 
