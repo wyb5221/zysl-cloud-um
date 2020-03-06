@@ -116,7 +116,7 @@ public class SysServiceServiceImpl implements SysServiceService {
 			map.put("jti", secret);
 		}
 
-		List<Long> authorities = request.getUserRoles();
+		List<String> authorities = request.getUserRoles();
 		map.put("authorities", authorities);
 		Date expirationDate = null;
 		if(!StringUtils.isBlank(request.getValidity()+"")){
@@ -141,7 +141,7 @@ public class SysServiceServiceImpl implements SysServiceService {
 
 
 	public static void main(String[] args) {
-		String str = "eyJhbGciOiJIUzUxMiJ9.eyJjbl9uYW1lIjpudWxsLCJ1c2VyX2lkIjpudWxsLCJ1c2VyX25hbWUiOm51bGwsInNjb3BlIjpudWxsLCJleHAiOjE1ODMxNzIyMzYsImNsaWVudF9pZCI6IjEwMDEiLCJqdGkiOiJBMEIxQzJEM0U0RjVHNkg3SThKOUtBTEJNQ05ET0VQRlEwUjFTMlQzVTRWNVc2WDdZOFo5IiwiYXV0aG9yaXRpZXMiOlsiYWRtaW4iXX0.e6vJPF_Bx5G7M8zQ4qLM0YwWwNvaRjD6CKzjYkEctorBA7zJvT9OXO9y6M5DxCJjAzoFaM-t7iG2sbYQtIQkNA";
+		String str = "eyJhbGciOiJIUzUxMiJ9.eyJjbl9uYW1lIjpudWxsLCJ1c2VyX2lkIjpudWxsLCJ1c2VyX25hbWUiOm51bGwsInNjb3BlIjpudWxsLCJleHAiOjE1ODY5OTY1NjksImNsaWVudF9pZCI6IjEwMDEiLCJqdGkiOiJBMEIxQzJEM0U0RjVHNkg3SThKOUtBTEJNQ05ET0VQRlEwUjFTMlQzVTRWNVc2WDdZOFo5IiwiYXV0aG9yaXRpZXMiOlsidGVzdCIsImRldmVsb3AiLCJhZG1pbiJdfQ.CJfEDv6ErsfSkOZx5IMNsD4V6q0LfllXD1OEvSoVNe0sx-iNjBbU1nGqccFwEx1PL6oqXPXTh63nucEgz-gZ8w";
 		Claims claims = Jwts.parser().setSigningKey("A0B1C2D3E4F5G6H7I8J9KALBMCNDOEPFQ0R1S2T3U4V5W6X7Y8Z9").
 				parseClaimsJws(str).getBody();
 		System.out.println(claims);
