@@ -12,8 +12,8 @@ public class CreateJwtRequest implements Serializable {
     private static final long serialVersionUID = 8898178260834886692L;
     //微服务id
     private Long id;
-    //有效期
-    private Integer validity;
+    //有效期，格式yyyy-MM-dd
+    private String validity;
     //角色列表
     private String userRoles;
 

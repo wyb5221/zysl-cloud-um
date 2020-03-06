@@ -56,7 +56,7 @@ public class DateUtil {
         }
         Date strtodate = null;
         try {
-            strtodate = format_1.parse(strDate);
+            strtodate = format_2.parse(strDate);
         } catch (ParseException e) {
             log.info("--getStringToDate--", e);
         }
@@ -75,4 +75,7 @@ public class DateUtil {
         return num < 0;
     }
 
+    public static void main(String[] args){
+        System.out.println(DateUtil.getDateToString(DateUtil.getStringToDate("2020-12-12")));
+    }
 }
