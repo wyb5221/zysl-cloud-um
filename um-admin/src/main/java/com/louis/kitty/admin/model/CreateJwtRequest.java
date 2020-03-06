@@ -15,7 +15,7 @@ public class CreateJwtRequest implements Serializable {
     //有效期
     private Integer validity;
     //角色列表
-    private List<String> userRoles;
+    private String userRoles;
 
     @Override
     public String toString() {

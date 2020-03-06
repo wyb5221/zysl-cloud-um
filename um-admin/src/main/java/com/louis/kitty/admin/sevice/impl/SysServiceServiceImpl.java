@@ -116,7 +116,7 @@ public class SysServiceServiceImpl implements SysServiceService {
 			map.put("jti", secret);
 		}
 
-		List<String> authorities = request.getUserRoles();
+		String[] authorities = request.getUserRoles().split(",");
 		map.put("authorities", authorities);
 		Date expirationDate = null;
 		if(!StringUtils.isBlank(request.getValidity()+"")){
